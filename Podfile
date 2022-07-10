@@ -7,5 +7,6 @@ target 'RickAndMorty' do
 
   # Pods for RickAndMorty
   pod 'SnapKit', '~> 5.6.0'
+  pod 'ProgressHUD'
 
 end

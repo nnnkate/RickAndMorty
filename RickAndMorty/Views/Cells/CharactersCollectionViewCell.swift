@@ -12,10 +12,26 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     
     static let id = "CharacterCell"
     
-    private var charactersLayerView = UIView()
+    private var charactersLayerView: UIView = {
+        let charactersLayerView = UIView()
+        charactersLayerView.backgroundColor = .gray
+        charactersLayerView.layer.cornerRadius = 15.VAdapted
+        charactersLayerView.layer.masksToBounds = true
+        
+        return charactersLayerView
+    }()
 
     private var charactersImageView = UIImageView()
-    private var charactersNameLabel = UILabel()
+    private var charactersNameLabel: UILabel = {
+        let charactersNameLabel = UILabel()
+        charactersNameLabel.numberOfLines = 0
+        charactersNameLabel.adjustsFontSizeToFitWidth = true
+        charactersNameLabel.textAlignment = .left
+        charactersNameLabel.font = UIFont(name: "TrebuchetMS-Bold", size: CGFloat(30).adaptedFontSize)
+        charactersNameLabel.textColor = .white
+        
+        return charactersNameLabel
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,13 +50,12 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureCell() {
-        setupAppearance()
         addSubviews()
         configureLayout()
     }
     
-    func updateData(character: Character) {
-        guard let url = URL(string: character.image) else { return }
+    func updateData(characterInfo: CharacterInfo) {
+        guard let url = URL(string: characterInfo.imageURL) else { return }
 
         DispatchQueue.global().async {
             do {
@@ -54,27 +69,14 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
             }
         }
        
-        charactersNameLabel.text = character.name
+        charactersNameLabel.text = characterInfo.name
     }
 }
 
 // MARK: - Appearance Methods
 
 private extension CharactersCollectionViewCell {
-    func setupAppearance() {
-        charactersLayerView.backgroundColor = .gray
-        charactersLayerView.layer.cornerRadius = 15.VAdapted
-        charactersLayerView.layer.masksToBounds = true
-        
-        charactersNameLabel.numberOfLines = 0
-        charactersNameLabel.adjustsFontSizeToFitWidth = true
-        charactersNameLabel.textAlignment = .left
-        charactersNameLabel.font = UIFont(name: "TrebuchetMS-Bold", size: CGFloat(30).adaptedFontSize)
-        charactersNameLabel.frame = CGRect(x: 0, y: 0, width: 306.HAdapted, height: 63.VAdapted)
-        charactersNameLabel.textColor = .white
-    }
-    
-    func addSubviews() {
+   func addSubviews() {
         addSubview(charactersLayerView)
         
         charactersLayerView.addSubview(charactersImageView)
@@ -96,8 +98,8 @@ private extension CharactersCollectionViewCell {
 
         charactersNameLabel.snp.makeConstraints{ make in
             make.top.equalTo(charactersImageView.snp.bottom).offset(-10.VAdapted)
+            make.centerX.equalToSuperview()
             make.leading.equalTo(4.VAdapted)
-            make.width.equalTo(306.HAdapted)
             make.height.equalTo(63.VAdapted)
         }
     }

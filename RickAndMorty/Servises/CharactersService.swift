@@ -24,7 +24,7 @@ fileprivate enum CharactersLink {
 }
 
 protocol CharactersServiceProtocol {
-    func getAllCharacters(completion: @escaping ([Character]?, Error?) -> ())
+    func getAllCharacters(completion: @escaping (Result<[Character], Error>) -> ())
 }
 
 class CharactersService {
@@ -71,10 +71,10 @@ class CharactersService {
 // MARK: - API
 
 extension CharactersService: CharactersServiceProtocol {
-    func getAllCharacters(completion: @escaping ([Character]?, Error?) -> ()) {
+    func getAllCharacters(completion: @escaping (Result<[Character], Error>) -> ()) {
         fetchData(from: CharactersLink.allCharactersLink) { data, error in
             if let error = error {
-                completion(nil, error)
+                completion(.failure(error))
                 return
             }
             
@@ -84,10 +84,10 @@ extension CharactersService: CharactersServiceProtocol {
             
             do {
                 let charactersResponse = try decoder.decode(CharactersResponse.self, from: data)
-                completion(charactersResponse.results, nil)
+                completion(.success(charactersResponse.results))
             }
             catch let error {
-                completion(nil, error)
+                completion(.failure(error))
             }
         }
     }

@@ -12,15 +12,14 @@ class MainViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private let charactersService: CharactersService
-    private var charactersData: [Character]?
+    private let viewModel = MainViewModel()
     
     private var currentPage = 0
     
-    private lazy var charactersCollectionViewHeight = 500.VAdapted
-    private lazy var charactersCollectionViewWidth = 280.HAdapted
+    private lazy var charactersCollectionViewHeight = 650.VAdapted
+    private lazy var charactersCollectionViewWidth = 290.HAdapted
     
-    private lazy var charactersCollectionViewSideInset = 30.HAdapted
+    private lazy var charactersCollectionViewSideInset = 25.HAdapted
     
     private lazy var charactersCollectionViewFrameSpacing = (view.bounds.width - charactersCollectionViewWidth) / 2
 
@@ -51,8 +50,8 @@ class MainViewController: UIViewController {
      //MARK: - Initialization and deinitialization
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        charactersService = CharactersService()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        viewModel.view = self
     }
 
     required init?(coder: NSCoder) {
@@ -68,12 +67,8 @@ class MainViewController: UIViewController {
         addSubviews()
         configureLayout()
         
-        charactersService.getAllCharacters() { [weak self] results, error in
-            self?.charactersData = results
-            self?.charactersCollectionView.reloadData()
-        }
+        viewModel.loadCharacters()
     }
-
 }
 
 // MARK: - Appearance Methods
@@ -93,7 +88,7 @@ private extension MainViewController {
     
     func configureLayout() {
         charactersCollectionView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-187.VAdapted)
+            make.bottom.equalToSuperview().offset(-100.VAdapted)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(charactersCollectionViewHeight)
         }
@@ -102,17 +97,13 @@ private extension MainViewController {
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let charactersData = charactersData else { return 0 }
-        
-        return charactersData.count
+        return viewModel.numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharactersCell", for: indexPath) as! CharactersCollectionViewCell
         
-        guard let charactersData = charactersData else { return cell }
-        
-        cell.updateData(character: charactersData[indexPath.row])
+        cell.updateData(characterInfo: viewModel.getCharacterInfo(for: indexPath))
         return cell
     }
 }
@@ -125,10 +116,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainViewController: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard let charactersData = charactersData else { return }
-
-        charactersCollectionView.reloadItems(at: [IndexPath(row: currentPage, section: 0)])
-
         var pageWidth: CGFloat = 0
         let currentPageWidth = charactersCollectionViewWidth + charactersCollectionViewSideInset - charactersCollectionViewFrameSpacing
         if currentPage != 0 {
@@ -140,9 +127,9 @@ extension MainViewController: UICollectionViewDelegate {
         if velocity.x != 0 {
             newPage = velocity.x > 0 ? currentPage + 1 : currentPage - 1
             if newPage < 0 {
-                newPage = charactersData.count - 1
+                newPage = viewModel.numberOfItems - 1
             }
-            if newPage > charactersData.count - 1 {
+            if newPage > viewModel.numberOfItems - 1 {
                 newPage = 0
             }
         }
@@ -150,6 +137,33 @@ extension MainViewController: UICollectionViewDelegate {
         currentPage = newPage
         let point = CGPoint (x: CGFloat(newPage - 1) * pageWidth + currentPageWidth, y: 0)
         targetContentOffset.pointee = point
+    }
+}
+
+// MARK: - MainViewInput
+
+extension MainViewController: MainViewInput {
+    
+    func didUpdate(with state: ViewState) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            switch state {
+            case .idle:
+                break
+            case .loading:
+                self.startLoading()
+            case .success:
+                self.stopLoading()
+               // self.tableView.setContentOffset(.zero, animated: true)
+                //self.charactersCollectionView.setContentOffset(.zero, animated: true)
+                self.charactersCollectionView.reloadData()
+            case .error(let error):
+                self.stopLoading()
+                self.presentDefaultAlert(title: "Something went wrong!",
+                                         message: error.localizedDescription,
+                                         buttonTitle: "Try Again") { self.viewModel.loadCharacters() }
+            }
+        }
     }
 }
 

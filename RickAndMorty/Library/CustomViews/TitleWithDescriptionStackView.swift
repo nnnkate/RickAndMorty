@@ -51,13 +51,10 @@ class TitleWithDescriptionStackView: UIStackView {
 private extension TitleWithDescriptionStackView {
     func setupAppearance(title: String) {
         self.axis = .vertical
-        self.distribution = .fillProportionally
+        self.distribution = .fillEqually
+        //self.spacing = 2.VAdapted
+        
         titleLabel.text = title
-//        numberOfLines = 1
-//        adjustsFontSizeToFitWidth = true
-//        minimumScaleFactor = 0.5
-//        font = UIFont(name: "TrebuchetMS", size: CGFloat(20).adaptedFontSize)
-//        textColor = .white
     }
     
     func addSubviews() {

@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     
     private var currentPage = 0
     
-    private lazy var charactersCollectionViewHeight = 650.VAdapted
+    private lazy var charactersCollectionViewHeight = 600.VAdapted
     private lazy var charactersCollectionViewWidth = 290.HAdapted
     
     private lazy var charactersCollectionViewSideInset = 25.HAdapted
@@ -88,8 +88,8 @@ private extension MainViewController {
     
     func configureLayout() {
         charactersCollectionView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-100.VAdapted)
             make.leading.trailing.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.height.equalTo(charactersCollectionViewHeight)
         }
     }

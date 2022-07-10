@@ -7,10 +7,6 @@
 
 import Foundation
 
-private struct CharactersResponse: Decodable {
-    let results: [Character]
-}
-
 fileprivate enum CharactersLink {
     case link(scheme: String, host: String, path: String)
     

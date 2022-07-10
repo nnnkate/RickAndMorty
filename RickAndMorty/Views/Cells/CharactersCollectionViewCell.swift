@@ -47,22 +47,22 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     private lazy var additionalInformation: UIStackView = {
         let additionalInformation = UIStackView()
         additionalInformation.axis = .vertical
-        additionalInformation.distribution = .equalSpacing
-        additionalInformation.spacing = 20.VAdapted
+        additionalInformation.distribution = .fillProportionally
+        additionalInformation.spacing = 15.VAdapted
         
         return additionalInformation
+    }()
+    
+    private lazy var originStackView: TitleWithDescriptionStackView = {
+        let firstSeenInStackView = TitleWithDescriptionStackView(title: "Origin:")
+        
+        return firstSeenInStackView
     }()
     
     private lazy var lastKnownLocationStackView: TitleWithDescriptionStackView = {
         let lastKnownLocationStackView = TitleWithDescriptionStackView(title: "Last known location:")
         
         return lastKnownLocationStackView
-    }()
-    
-    private lazy var firstSeenInStackView: TitleWithDescriptionStackView = {
-        let firstSeenInStackView = TitleWithDescriptionStackView(title: "First seen in:")
-        
-        return firstSeenInStackView
     }()
     
     //MARK: - Initialization and deinitialization
@@ -100,8 +100,8 @@ private extension CharactersCollectionViewCell {
        charactersLayerView.addSubview(statusLabel)
        
        charactersLayerView.addSubview(additionalInformation)
+       additionalInformation.addArrangedSubview(originStackView)
        additionalInformation.addArrangedSubview(lastKnownLocationStackView)
-       additionalInformation.addArrangedSubview(firstSeenInStackView)
     }
     
     func configureLayout() {
@@ -121,21 +121,19 @@ private extension CharactersCollectionViewCell {
             make.top.equalTo(charactersImageView.snp.bottom).offset(5.VAdapted)
             make.centerX.equalToSuperview()
             make.leading.equalTo(4.VAdapted)
-            //make.height.equalTo(63.VAdapted)
         }
         
         statusLabel.snp.makeConstraints{ make in
             make.top.equalTo(charactersNameLabel.snp.bottom).offset(5.VAdapted)
             make.centerX.equalToSuperview()
             make.leading.equalTo(4.VAdapted)
-            //make.height.equalTo(63.VAdapted)
+
         }
         
         additionalInformation.snp.makeConstraints{ make in
-            make.top.equalTo(statusLabel.snp.bottom).offset(15.VAdapted)
+            make.top.equalTo(statusLabel.snp.bottom).offset(25.VAdapted)
             make.centerX.equalToSuperview()
-            make.leading.equalTo(4.VAdapted)
-            //make.height.equalTo(63.VAdapted)
+            make.leading.equalTo(4.HAdapted)
         }
     }
 }
@@ -153,6 +151,6 @@ extension CharactersCollectionViewCell {
         charactersNameLabel.text = characterInfo.name
         statusLabel.configureAttributedLabel(status: characterInfo.status, species: characterInfo.species)
         lastKnownLocationStackView.configure(with: characterInfo.location)
-        firstSeenInStackView.configure(with: characterInfo.episode)
+        originStackView.configure(with: characterInfo.origin)
     }
 }

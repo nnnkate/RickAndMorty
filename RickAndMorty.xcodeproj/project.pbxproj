@@ -16,6 +16,7 @@
 		85A684B2287ACBD200657017 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A684B1287ACBD200657017 /* CharacterStatus.swift */; };
 		85A684B6287AD1AB00657017 /* StatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A684B5287AD1AB00657017 /* StatusLabel.swift */; };
 		85B38EEA286998EB00751910 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B38EE9286998EB00751910 /* MainViewModel.swift */; };
+		85B838D9287B1B05008F05B4 /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B838D8287B1B05008F05B4 /* CharactersResponse.swift */; };
 		85B8469728635D3300904D84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8469628635D3300904D84 /* AppDelegate.swift */; };
 		85B8469928635D3300904D84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8469828635D3300904D84 /* SceneDelegate.swift */; };
 		85B8469B28635D3300904D84 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8469A28635D3300904D84 /* MainViewController.swift */; };
@@ -27,7 +28,6 @@
 		85B846B728635EDD00904D84 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846B028635EDD00904D84 /* Int.swift */; };
 		85B846B828635EDD00904D84 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846B128635EDD00904D84 /* CGFloat.swift */; };
 		85B846B928635EDD00904D84 /* AdaptiveLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846B328635EDD00904D84 /* AdaptiveLayoutHelper.swift */; };
-		85B846BF2864850400904D84 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846BE2864850400904D84 /* Character.swift */; };
 		85B846C12864857600904D84 /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846C02864857600904D84 /* CharactersService.swift */; };
 		85B846C328648E8F00904D84 /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846C228648E8F00904D84 /* CharactersCollectionViewCell.swift */; };
 		85BC1DD9287AF40D000EB24C /* TitleWithDescriptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC1DD8287AF40D000EB24C /* TitleWithDescriptionStackView.swift */; };
@@ -47,6 +47,7 @@
 		85A684B1287ACBD200657017 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
 		85A684B5287AD1AB00657017 /* StatusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusLabel.swift; sourceTree = "<group>"; };
 		85B38EE9286998EB00751910 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		85B838D8287B1B05008F05B4 /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
 		85B8469328635D3300904D84 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B8469628635D3300904D84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B8469828635D3300904D84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		85B846B028635EDD00904D84 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		85B846B128635EDD00904D84 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		85B846B328635EDD00904D84 /* AdaptiveLayoutHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveLayoutHelper.swift; sourceTree = "<group>"; };
-		85B846BE2864850400904D84 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		85B846C02864857600904D84 /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
 		85B846C228648E8F00904D84 /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		85BC1DD8287AF40D000EB24C /* TitleWithDescriptionStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithDescriptionStackView.swift; sourceTree = "<group>"; };
@@ -162,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				85A684AF287AB47200657017 /* CharacterInfo.swift */,
-				85B846BE2864850400904D84 /* Character.swift */,
 				85A684B1287ACBD200657017 /* CharacterStatus.swift */,
 			);
 			path = Character;
@@ -175,6 +174,14 @@
 				85BC1DD8287AF40D000EB24C /* TitleWithDescriptionStackView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		85B838DC287B1B80008F05B4 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				85B838D8287B1B05008F05B4 /* CharactersResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		85B8468A28635D3300904D84 = {
@@ -271,6 +278,7 @@
 		85B846BC2863972E00904D84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				85B838DC287B1B80008F05B4 /* Responses */,
 				85A684B3287ACBD800657017 /* Character */,
 			);
 			path = Models;
@@ -401,6 +409,7 @@
 			files = (
 				85B846B828635EDD00904D84 /* CGFloat.swift in Sources */,
 				85A684A5287A9F8900657017 /* MainViewModelling.swift in Sources */,
+				85B838D9287B1B05008F05B4 /* CharactersResponse.swift in Sources */,
 				85B846B428635EDD00904D84 /* Dimension.swift in Sources */,
 				85B8469B28635D3300904D84 /* MainViewController.swift in Sources */,
 				85A684B6287AD1AB00657017 /* StatusLabel.swift in Sources */,
@@ -415,7 +424,6 @@
 				85B846C12864857600904D84 /* CharactersService.swift in Sources */,
 				85B846B628635EDD00904D84 /* Array.swift in Sources */,
 				85A684A7287A9FC800657017 /* MainViewInput.swift in Sources */,
-				85B846BF2864850400904D84 /* Character.swift in Sources */,
 				85A684B2287ACBD200657017 /* CharacterStatus.swift in Sources */,
 				85A684B0287AB47200657017 /* CharacterInfo.swift in Sources */,
 				85BC1DDB287AF9DA000EB24C /* UIColor+Extensions.swift in Sources */,

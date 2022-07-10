@@ -15,7 +15,7 @@ struct CharacterInfo {
     let type: String
     let imageURL: String
     let location: String
-    let episode: String
+    let origin: String
     
     init(character: Character) {
         self.id = character.id
@@ -25,6 +25,6 @@ struct CharacterInfo {
         self.type = character.type
         self.imageURL = character.image
         self.location = character.location.name
-        self.episode = character.episode.first ?? ""
+        self.origin = character.origin.name
     }
 }

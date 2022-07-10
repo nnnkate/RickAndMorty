@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         return charactersCollectionView
     }()
     
-     //MARK: - Initialization and deinitialization
+    //MARK: - Initialization and deinitialization
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

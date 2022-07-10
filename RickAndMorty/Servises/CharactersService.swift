@@ -14,13 +14,9 @@ private struct CharactersResponse: Decodable {
 fileprivate enum CharactersLink {
     case link(scheme: String, host: String, path: String)
     
-    static let allCharactersLink = CharactersLink.link(scheme: CharactersService.scheme,
-                                                 host: CharactersService.host,
-                                                 path: "/api/character")
-    
-    static func characterLink(with id: String) -> CharactersLink {
-        .link(scheme: CharactersService.scheme, host: CharactersService.host, path: "api/character")
-    }
+    static let allCharactersLink: CharactersLink = .link(scheme: CharactersService.scheme,
+                                                         host: CharactersService.host,
+                                                         path: "/api/character")
 }
 
 protocol CharactersServiceProtocol {

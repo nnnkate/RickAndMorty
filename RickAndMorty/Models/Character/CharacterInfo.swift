@@ -10,7 +10,7 @@ import Foundation
 struct CharacterInfo {
     let id: Int
     let name: String
-    let status: String
+    let status: CharacterStatus
     let species: String
     let type: String
     let imageURL: String
@@ -18,7 +18,7 @@ struct CharacterInfo {
     init(character: Character) {
         self.id = character.id
         self.name = character.name
-        self.status = character.status
+        self.status = CharacterStatus(rawValue: character.status) ?? .uncnown
         self.species = character.species
         self.type = character.type
         self.imageURL = character.image

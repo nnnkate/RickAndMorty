@@ -13,6 +13,8 @@
 		85A684AA287AA55300657017 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A684A9287AA55300657017 /* ViewState.swift */; };
 		85A684AE287AA6B000657017 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A684AD287AA6B000657017 /* UIViewController+Extensions.swift */; };
 		85A684B0287AB47200657017 /* CharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A684AF287AB47200657017 /* CharacterInfo.swift */; };
+		85A684B2287ACBD200657017 /* CharacterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A684B1287ACBD200657017 /* CharacterStatus.swift */; };
+		85A684B6287AD1AB00657017 /* StatusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A684B5287AD1AB00657017 /* StatusLabel.swift */; };
 		85B38EEA286998EB00751910 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B38EE9286998EB00751910 /* MainViewModel.swift */; };
 		85B8469728635D3300904D84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8469628635D3300904D84 /* AppDelegate.swift */; };
 		85B8469928635D3300904D84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8469828635D3300904D84 /* SceneDelegate.swift */; };
@@ -40,6 +42,8 @@
 		85A684A9287AA55300657017 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		85A684AD287AA6B000657017 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		85A684AF287AB47200657017 /* CharacterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfo.swift; sourceTree = "<group>"; };
+		85A684B1287ACBD200657017 /* CharacterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatus.swift; sourceTree = "<group>"; };
+		85A684B5287AD1AB00657017 /* StatusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusLabel.swift; sourceTree = "<group>"; };
 		85B38EE9286998EB00751910 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		85B8469328635D3300904D84 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B8469628635D3300904D84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		85A684B3287ACBD800657017 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				85A684AF287AB47200657017 /* CharacterInfo.swift */,
+				85B846BE2864850400904D84 /* Character.swift */,
+				85A684B1287ACBD200657017 /* CharacterStatus.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		85A684B4287AD18F00657017 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				85A684B5287AD1AB00657017 /* StatusLabel.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		85B8468A28635D3300904D84 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +243,7 @@
 		85B846BA28635EFA00904D84 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				85A684B4287AD18F00657017 /* CustomViews */,
 				85A684AB287AA66000657017 /* Extensions */,
 				85A684A8287AA53100657017 /* State */,
 				85B846AA28635EDD00904D84 /* AdaptiveLayout */,
@@ -242,8 +265,7 @@
 		85B846BC2863972E00904D84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				85B846BE2864850400904D84 /* Character.swift */,
-				85A684AF287AB47200657017 /* CharacterInfo.swift */,
+				85A684B3287ACBD800657017 /* Character */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -375,6 +397,7 @@
 				85A684A5287A9F8900657017 /* MainViewModelling.swift in Sources */,
 				85B846B428635EDD00904D84 /* Dimension.swift in Sources */,
 				85B8469B28635D3300904D84 /* MainViewController.swift in Sources */,
+				85A684B6287AD1AB00657017 /* StatusLabel.swift in Sources */,
 				85B846B928635EDD00904D84 /* AdaptiveLayoutHelper.swift in Sources */,
 				85A684AE287AA6B000657017 /* UIViewController+Extensions.swift in Sources */,
 				85B846C328648E8F00904D84 /* CharactersCollectionViewCell.swift in Sources */,
@@ -386,6 +409,7 @@
 				85B846B628635EDD00904D84 /* Array.swift in Sources */,
 				85A684A7287A9FC800657017 /* MainViewInput.swift in Sources */,
 				85B846BF2864850400904D84 /* Character.swift in Sources */,
+				85A684B2287ACBD200657017 /* CharacterStatus.swift in Sources */,
 				85A684B0287AB47200657017 /* CharacterInfo.swift in Sources */,
 				85B8469928635D3300904D84 /* SceneDelegate.swift in Sources */,
 				85B846B528635EDD00904D84 /* Device.swift in Sources */,
@@ -545,7 +569,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -574,7 +598,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

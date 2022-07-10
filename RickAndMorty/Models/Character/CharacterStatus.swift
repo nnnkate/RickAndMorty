@@ -11,7 +11,7 @@ import UIKit
 enum CharacterStatus: String {
     case alive = "Alive"
     case dead = "Dead"
-    case uncnown = "Uncnown"
+    case unknown = "Unknown"
     
     var statusColor: UIColor {
         switch self {

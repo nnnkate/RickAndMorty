@@ -12,4 +12,12 @@ struct Character: Codable {
     let species: String
     let type: String
     let image: String
+    let location: Location
+    let episode: [String]
 }
+
+struct Location: Codable {
+    let name: String
+    let url: String
+}
+

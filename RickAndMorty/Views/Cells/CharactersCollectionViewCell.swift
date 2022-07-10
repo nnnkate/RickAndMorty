@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class CharactersCollectionViewCell: UICollectionViewCell {
     
@@ -16,7 +17,7 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     
     private lazy var charactersLayerView: UIView = {
         let charactersLayerView = UIView()
-        charactersLayerView.backgroundColor = .gray
+        charactersLayerView.backgroundColor = .customGrayColor
         charactersLayerView.layer.cornerRadius = 15.VAdapted
         charactersLayerView.layer.masksToBounds = true
         
@@ -27,7 +28,7 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
     
     private lazy var charactersNameLabel: UILabel = {
         let charactersNameLabel = UILabel()
-        //charactersNameLabel.numberOfLines = 0
+        charactersNameLabel.numberOfLines = 1
         charactersNameLabel.adjustsFontSizeToFitWidth = true
         charactersNameLabel.minimumScaleFactor = 0.5
         charactersNameLabel.textAlignment = .left
@@ -41,6 +42,27 @@ final class CharactersCollectionViewCell: UICollectionViewCell {
         let statusLabel = StatusLabel()
         
         return statusLabel
+    }()
+    
+    private lazy var additionalInformation: UIStackView = {
+        let additionalInformation = UIStackView()
+        additionalInformation.axis = .vertical
+        additionalInformation.distribution = .equalSpacing
+        additionalInformation.spacing = 20.VAdapted
+        
+        return additionalInformation
+    }()
+    
+    private lazy var lastKnownLocationStackView: TitleWithDescriptionStackView = {
+        let lastKnownLocationStackView = TitleWithDescriptionStackView(title: "Last known location:")
+        
+        return lastKnownLocationStackView
+    }()
+    
+    private lazy var firstSeenInStackView: TitleWithDescriptionStackView = {
+        let firstSeenInStackView = TitleWithDescriptionStackView(title: "First seen in:")
+        
+        return firstSeenInStackView
     }()
     
     //MARK: - Initialization and deinitialization
@@ -76,6 +98,10 @@ private extension CharactersCollectionViewCell {
        charactersLayerView.addSubview(charactersImageView)
        charactersLayerView.addSubview(charactersNameLabel)
        charactersLayerView.addSubview(statusLabel)
+       
+       charactersLayerView.addSubview(additionalInformation)
+       additionalInformation.addArrangedSubview(lastKnownLocationStackView)
+       additionalInformation.addArrangedSubview(firstSeenInStackView)
     }
     
     func configureLayout() {
@@ -104,6 +130,13 @@ private extension CharactersCollectionViewCell {
             make.leading.equalTo(4.VAdapted)
             //make.height.equalTo(63.VAdapted)
         }
+        
+        additionalInformation.snp.makeConstraints{ make in
+            make.top.equalTo(statusLabel.snp.bottom).offset(15.VAdapted)
+            make.centerX.equalToSuperview()
+            make.leading.equalTo(4.VAdapted)
+            //make.height.equalTo(63.VAdapted)
+        }
     }
 }
 
@@ -111,21 +144,15 @@ private extension CharactersCollectionViewCell {
 
 extension CharactersCollectionViewCell {
     func updateData(characterInfo: CharacterInfo) {
-        guard let url = URL(string: characterInfo.imageURL) else { return }
+        guard let imageURL = URL(string: characterInfo.imageURL) else { return }
 
-        DispatchQueue.global().async {
-            do {
-                let data = try Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    self.charactersImageView.image = UIImage(data: data)
-                }
-            }
-            catch let error {
-               print(error)
-            }
-        }
+        charactersImageView.kf.indicatorType = .activity
+        charactersImageView.kf.setImage(with: imageURL,
+                                        options: [.cacheOriginalImage])
        
         charactersNameLabel.text = characterInfo.name
         statusLabel.configureAttributedLabel(status: characterInfo.status, species: characterInfo.species)
+        lastKnownLocationStackView.configure(with: characterInfo.location)
+        firstSeenInStackView.configure(with: characterInfo.episode)
     }
 }

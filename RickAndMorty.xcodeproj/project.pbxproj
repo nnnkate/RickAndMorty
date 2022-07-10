@@ -30,6 +30,8 @@
 		85B846BF2864850400904D84 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846BE2864850400904D84 /* Character.swift */; };
 		85B846C12864857600904D84 /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846C02864857600904D84 /* CharactersService.swift */; };
 		85B846C328648E8F00904D84 /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846C228648E8F00904D84 /* CharactersCollectionViewCell.swift */; };
+		85BC1DD9287AF40D000EB24C /* TitleWithDescriptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC1DD8287AF40D000EB24C /* TitleWithDescriptionStackView.swift */; };
+		85BC1DDB287AF9DA000EB24C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC1DDA287AF9DA000EB24C /* UIColor+Extensions.swift */; };
 		ED64B9A248416BA210C0CD76 /* Pods_RickAndMorty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 759F37D2ACF7D6004AC84EB4 /* Pods_RickAndMorty.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		85B846BE2864850400904D84 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		85B846C02864857600904D84 /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
 		85B846C228648E8F00904D84 /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
+		85BC1DD8287AF40D000EB24C /* TitleWithDescriptionStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithDescriptionStackView.swift; sourceTree = "<group>"; };
+		85BC1DDA287AF9DA000EB24C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		D404483307CAAA00CC529D46 /* Pods-RickAndMorty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMorty.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMorty/Pods-RickAndMorty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				85A684AD287AA6B000657017 /* UIViewController+Extensions.swift */,
+				85BC1DDA287AF9DA000EB24C /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				85A684B5287AD1AB00657017 /* StatusLabel.swift */,
+				85BC1DD8287AF40D000EB24C /* TitleWithDescriptionStackView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -405,12 +411,14 @@
 				85B38EEA286998EB00751910 /* MainViewModel.swift in Sources */,
 				85B8469728635D3300904D84 /* AppDelegate.swift in Sources */,
 				85B846B728635EDD00904D84 /* Int.swift in Sources */,
+				85BC1DD9287AF40D000EB24C /* TitleWithDescriptionStackView.swift in Sources */,
 				85B846C12864857600904D84 /* CharactersService.swift in Sources */,
 				85B846B628635EDD00904D84 /* Array.swift in Sources */,
 				85A684A7287A9FC800657017 /* MainViewInput.swift in Sources */,
 				85B846BF2864850400904D84 /* Character.swift in Sources */,
 				85A684B2287ACBD200657017 /* CharacterStatus.swift in Sources */,
 				85A684B0287AB47200657017 /* CharacterInfo.swift in Sources */,
+				85BC1DDB287AF9DA000EB24C /* UIColor+Extensions.swift in Sources */,
 				85B8469928635D3300904D84 /* SceneDelegate.swift in Sources */,
 				85B846B528635EDD00904D84 /* Device.swift in Sources */,
 			);

@@ -9,13 +9,9 @@ import UIKit
 
 class StatusLabel: UILabel {
     
-    // MARK: - Private properties
-    
-
-    
     // MARK: - Initialization and deinitialization
     
-    init(status: CharacterStatus = .uncnown) {
+    init(status: CharacterStatus = .unknown) {
         super.init(frame: .zero)
         
         self.setupAppearance()
@@ -42,7 +38,7 @@ private extension StatusLabel {
 // MARK: - Public methods
 
 extension StatusLabel {
-    func configureAttributedLabel(status: CharacterStatus = .uncnown, species: String = "") {
+    func configureAttributedLabel(status: CharacterStatus = .unknown, species: String = "") {
         let attachment = NSTextAttachment()
         attachment.image = UIImage(systemName: "circle.fill")?.withTintColor(status.statusColor)
         attachment.bounds = CGRect(x: 0, y: 0, width: 15, height: 15)

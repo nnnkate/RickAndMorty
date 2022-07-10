@@ -75,7 +75,7 @@ class MainViewController: UIViewController {
 
 private extension MainViewController {
     func setupAppearance() {
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .customDarkGrayColor
         
         charactersCollectionView.backgroundColor = .clear
         charactersCollectionView.showsHorizontalScrollIndicator = false
@@ -154,8 +154,6 @@ extension MainViewController: MainViewInput {
                 self.startLoading()
             case .success:
                 self.stopLoading()
-               // self.tableView.setContentOffset(.zero, animated: true)
-                //self.charactersCollectionView.setContentOffset(.zero, animated: true)
                 self.charactersCollectionView.reloadData()
             case .error(let error):
                 self.stopLoading()
